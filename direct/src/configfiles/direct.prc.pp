@@ -1,7 +1,7 @@
 //
-// direct.prc.pp
+// _direct.prc.pp
 //
-// This file defines the script to auto-generate direct.prc at
+// This file defines the script to auto-generate _direct.prc at
 // ppremake time.  This is intended to fill in some of the default
 // parameters, in particular the default display types.
 //
