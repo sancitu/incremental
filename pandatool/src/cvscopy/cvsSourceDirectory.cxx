@@ -97,13 +97,13 @@ get_rel_to(const CVSSourceDirectory *other) const {
   while (a->_depth > b->_depth) {
     prefix += "../";
     a = a->_parent;
-    nassertr(a != (CVSSourceDirectory *)NULL, string());
+    assert(a != (CVSSourceDirectory *)NULL);
   }
 
   while (b->_depth > a->_depth) {
     postfix = b->_dirname + "/" + postfix;
     b = b->_parent;
-    nassertr(b != (CVSSourceDirectory *)NULL, string());
+    assert(b != (CVSSourceDirectory *)NULL);
   }
 
   while (a != b) {
@@ -111,12 +111,12 @@ get_rel_to(const CVSSourceDirectory *other) const {
     postfix = b->_dirname + "/" + postfix;
     a = a->_parent;
     b = b->_parent;
-    nassertr(a != (CVSSourceDirectory *)NULL, string());
-    nassertr(b != (CVSSourceDirectory *)NULL, string());
+    assert(a != (CVSSourceDirectory *)NULL);
+    assert(b != (CVSSourceDirectory *)NULL);
   }
 
   string result = prefix + postfix;
-  nassertr(!result.empty(), string());
+  assert(!result.empty());
   return result.substr(0, result.length() - 1);
 }
 
