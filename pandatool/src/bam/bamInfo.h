@@ -8,14 +8,14 @@
 
 #include <pandatoolbase.h>
 
-#include <eggToSomething.h>
+#include <programBase.h>
 #include <filename.h>
 #include <pt_Node.h>
 #include <sceneGraphAnalyzer.h>
 
 #include <vector>
 
-class TypedWriteable;
+class TypedWritable;
 
 ////////////////////////////////////////////////////////////////////
 // 	 Class : BamInfo
@@ -33,7 +33,7 @@ protected:
 private:
   bool get_info(const Filename &filename);
   void describe_scene_graph(Node *node);
-  void describe_general_object(TypedWriteable *object);
+  void describe_general_object(TypedWritable *object);
   void list_hierarchy(Node *node, int indent_level);
 
   typedef vector<Filename> Filenames;
