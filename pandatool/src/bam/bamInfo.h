@@ -8,7 +8,7 @@
 
 #include <pandatoolbase.h>
 
-#include <eggToSomething.h>
+#include <programBase.h>
 #include <filename.h>
 #include <pt_Node.h>
 #include <sceneGraphAnalyzer.h>
@@ -39,8 +39,9 @@ private:
   typedef vector<Filename> Filenames;
   Filenames _filenames;
 
-  bool _verbose_geoms;
+  bool _ls;
   bool _verbose_transitions;
+  bool _verbose_geoms;
 
   int _num_scene_graphs;
   SceneGraphAnalyzer _analyzer;
