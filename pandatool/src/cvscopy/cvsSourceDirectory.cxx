@@ -15,7 +15,7 @@
 ////////////////////////////////////////////////////////////////////
 CVSSourceDirectory::
 CVSSourceDirectory(CVSSourceTree *tree, CVSSourceDirectory *parent,
-		   const string &dirname) :
+                   const string &dirname) :
   _tree(tree),
   _parent(parent),
   _dirname(dirname)
@@ -97,13 +97,13 @@ get_rel_to(const CVSSourceDirectory *other) const {
   while (a->_depth > b->_depth) {
     prefix += "../";
     a = a->_parent;
-    assert(a != (CVSSourceDirectory *)NULL);
+    nassertr(a != (CVSSourceDirectory *)NULL, string());
   }
 
   while (b->_depth > a->_depth) {
     postfix = b->_dirname + "/" + postfix;
     b = b->_parent;
-    assert(b != (CVSSourceDirectory *)NULL);
+    nassertr(b != (CVSSourceDirectory *)NULL, string());
   }
 
   while (a != b) {
@@ -111,12 +111,12 @@ get_rel_to(const CVSSourceDirectory *other) const {
     postfix = b->_dirname + "/" + postfix;
     a = a->_parent;
     b = b->_parent;
-    assert(a != (CVSSourceDirectory *)NULL);
-    assert(b != (CVSSourceDirectory *)NULL);
+    nassertr(a != (CVSSourceDirectory *)NULL, string());
+    nassertr(b != (CVSSourceDirectory *)NULL, string());
   }
 
   string result = prefix + postfix;
-  assert(!result.empty());
+  nassertr(!result.empty(), string());
   return result.substr(0, result.length() - 1);
 }
 
@@ -236,11 +236,11 @@ scan(const Filename &directory, const string &key_filename) {
     Filename key(next_path, key_filename);
     if (key.exists()) {
       CVSSourceDirectory *subdir = 
-	new CVSSourceDirectory(_tree, this, filename);
+        new CVSSourceDirectory(_tree, this, filename);
       _children.push_back(subdir);
       
       if (!subdir->scan(next_path, key_filename)) {
-	return false;
+        return false;
       }
       
     } else {
