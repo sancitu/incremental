@@ -22,7 +22,7 @@
 int 
 main(int argc, char *argv[]) {
   if (argc < 2) {
-    cout << "test_pfstream command-line\n";
+    cerr << "test_pfstream command-line\n";
     return (1);
   }
 
@@ -34,7 +34,7 @@ main(int argc, char *argv[]) {
     cmd += argv[i];
   }
 
-  cout << "Executing command:\n" << cmd << "\n";
+  cerr << "Executing command:\n" << cmd << "\n";
   
   IPipeStream in(cmd);
 
