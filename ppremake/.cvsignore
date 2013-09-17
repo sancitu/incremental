@@ -11,3 +11,5 @@ config.status
 configure
 ppremake
 stamp-h1
+Debug
+ipch
